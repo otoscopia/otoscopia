@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { TextInput as PaperInput } from 'react-native-paper';
 import TextInput from '../../../components/Text-Input';
 
 export default function EmailInput({ onChangeText, onEndEditing, showHelper }) {
@@ -14,7 +15,7 @@ export default function EmailInput({ onChangeText, onEndEditing, showHelper }) {
       onEndEditing={onEndEditing}
       placeholder="@deped.edu.ph"
       textContentType="emailAddress"
-      right={<TextInput.Icon icon="email" forceTextInputFocus={false} />}
+      right={<PaperInput.Icon icon="email" forceTextInputFocus={false} />}
       showHelper={showHelper}
       helperMessage="Invalid email address"
     />
