@@ -1,10 +1,11 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import SignIn from '../../features/Accounts/screens/Sign-In';
 
 const Stack = createNativeStackNavigator();
 
-function TemplateComponent() {
-  return null;
+function SignInComponent() {
+  return <SignIn />;
 }
 
 const screenOptions = {
@@ -14,7 +15,7 @@ const screenOptions = {
 export default function Accounts() {
   return (
     <Stack.Navigator screenOptions={screenOptions}>
-      <Stack.Screen name="template" component={TemplateComponent} />
+      <Stack.Screen name="template" component={SignInComponent} />
     </Stack.Navigator>
   );
 }
