@@ -11,8 +11,12 @@ export default function AuthenticationProvider({ children }) {
     console.log(email, password);
   }
 
+  function signUpRequest(phoneNumber, email) {
+    console.log(phoneNumber, email);
+  }
+
   const contextValue = useMemo(
-    () => ({ isAuthenticated: !!user, signInRequest }),
+    () => ({ isAuthenticated: !!user, signInRequest, signUpRequest }),
     [user],
   );
 
