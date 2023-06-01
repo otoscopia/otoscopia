@@ -11,7 +11,6 @@ import PasswordInput from '../components/Password-Input';
 import Button from '../../../components/Button';
 import PressableText from '../../../components/Pressable-Text';
 import AnimatedIllustration from '../../../assets/sign-in-illustration.json';
-import colors from '../../../infrastructure/themes/colors';
 
 export default function SignIn() {
   const navigation = useNavigation();
