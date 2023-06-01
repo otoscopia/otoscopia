@@ -23,7 +23,7 @@ module.exports = {
   rules: {
     'react/jsx-filename-extension': [
       1,
-      {extensions: ['.ts', '.tsx', '.js', '.jsx']},
+      { extensions: ['.ts', '.tsx', '.js', '.jsx'] },
     ],
     'react-native/no-unused-styles': 2,
     'react-native/split-platform-components': 2,
@@ -31,6 +31,6 @@ module.exports = {
     'react-native/no-color-literals': 2,
     'react-native/no-raw-text': 2,
     'react-native/no-single-element-style-arrays': 2,
-    'prettier/prettier': ['error', {endOfLine: 'auto'}],
+    'prettier/prettier': ['error', { endOfLine: 'auto' }],
   },
 };
