@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
-import React, { createContext, useMemo, useState } from 'react';
+import React, { createContext, useEffect, useMemo, useState } from 'react';
+import auth from '@react-native-firebase/auth';
 
 export const AuthenticationContext = createContext();
 
@@ -7,6 +8,18 @@ export default function AuthenticationProvider({ children }) {
   const [initializing, setInitializing] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const subscriber = auth().onAuthStateChanged(userData => {
+      if (userData) {
+        setUser(userData);
+        if (initializing) {
+          setInitializing(false);
+        }
+      }
+    });
+    return subscriber;
+  }, [initializing]);
 
   function signInRequest(email, password) {
     setIsLoading(true);
@@ -29,6 +42,8 @@ export default function AuthenticationProvider({ children }) {
     }),
     [user, isLoading],
   );
+
+  if (initializing) return null;
 
   return (
     <AuthenticationContext.Provider value={contextValue}>
