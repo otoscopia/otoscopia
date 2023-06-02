@@ -9,6 +9,8 @@ export default function AuthenticationProvider({ children }) {
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState(null);
 
+  const [signInRequestErrorCode, setSignInRequestErrorCode] = useState('');
+
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(userData => {
       if (userData) {
@@ -23,8 +25,17 @@ export default function AuthenticationProvider({ children }) {
 
   function signInRequest(email, password) {
     setIsLoading(true);
-    console.log(email, password);
-    setIsLoading(false);
+    auth()
+      .signInWithEmailAndPassword(email, password)
+      .catch(error => {
+        if (error.code === 'auth/email-already-in-use') {
+          setSignInRequestErrorCode('That email address is already in use!');
+        }
+
+        if (error.code === 'auth/invalid-email') {
+          setSignInRequestErrorCode('That email address is invalid!');
+        }
+      });
   }
 
   function signUpRequest(phoneNumber, email) {
@@ -38,9 +49,10 @@ export default function AuthenticationProvider({ children }) {
       isAuthenticated: !!user,
       isLoading,
       signInRequest,
+      signInRequestErrorCode,
       signUpRequest,
     }),
-    [user, isLoading],
+    [user, isLoading, signInRequestErrorCode],
   );
 
   if (initializing) return null;
