@@ -11,6 +11,9 @@ export default function AuthenticationProvider({ children }) {
 
   const [signInRequestError, setSignInRequestError] = useState('');
 
+  const [verificationId, setVerificationId] = useState('');
+  const [verificationError, setVerificationError] = useState('');
+
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(userData => {
       if (userData) {
@@ -51,6 +54,21 @@ export default function AuthenticationProvider({ children }) {
     setIsLoading(false);
   }
 
+  function codeRequest(phoneNumber) {
+    const countryCode = '+63';
+    const tempPhoneNumber = phoneNumber.toString().trim(1);
+    const countryPhoneNumber = countryCode + tempPhoneNumber;
+
+    auth()
+      .verifyPhoneNumber(countryPhoneNumber)
+      .then(data => {
+        setVerificationId(data.verificationId);
+      })
+      .catch(error => {
+        setVerificationError(error);
+      });
+  }
+
   const contextValue = useMemo(
     () => ({
       isAuthenticated: !!user,
@@ -58,6 +76,7 @@ export default function AuthenticationProvider({ children }) {
       signInRequest,
       signInRequestError,
       signUpRequest,
+      codeRequest,
     }),
     [user, isLoading, signInRequestError],
   );
