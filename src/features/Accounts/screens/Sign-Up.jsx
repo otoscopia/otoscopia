@@ -17,7 +17,7 @@ export default function SignUp() {
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState(false);
 
-  const [phoneNumber, setPhoneNumber] = React.useState('');
+  const [phoneNumber, setPhoneNumber] = React.useState(0);
   const [phoneNumberError, setPhoneNumberError] = React.useState(false);
 
   const [checked, setChecked] = useState(false);
@@ -33,7 +33,7 @@ export default function SignUp() {
       emailError === false &&
       checked === true
     ) {
-      signUpRequest(phoneNumber.trim(), email.toLowerCase().trim());
+      signUpRequest(phoneNumber, email.toLowerCase().trim());
     }
   };
 
