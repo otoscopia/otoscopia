@@ -60,12 +60,12 @@ export default function AuthenticationProvider({ children }) {
     const countryPhoneNumber = countryCode + tempPhoneNumber;
 
     auth()
-      .verifyPhoneNumber(countryPhoneNumber)
+      .verifyPhoneNumber(countryPhoneNumber, 300)
       .then(data => {
         setVerificationId(data.verificationId);
       })
       .catch(error => {
-        setVerificationError(error);
+        setVerificationError('Error sending verification code.', error);
       });
   }
 
