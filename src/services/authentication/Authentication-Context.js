@@ -9,15 +9,15 @@ export default function AuthenticationProvider({ children }) {
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState(null);
 
-  const [signInRequestErrorCode, setSignInRequestErrorCode] = useState('');
+  const [signInRequestError, setSignInRequestError] = useState('');
 
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(userData => {
       if (userData) {
         setUser(userData);
-        if (initializing) {
-          setInitializing(false);
-        }
+      }
+      if (initializing) {
+        setInitializing(false);
       }
     });
     return subscriber;
@@ -29,12 +29,19 @@ export default function AuthenticationProvider({ children }) {
       .signInWithEmailAndPassword(email, password)
       .catch(error => {
         if (error.code === 'auth/email-already-in-use') {
-          setSignInRequestErrorCode('That email address is already in use!');
+          setSignInRequestError('That email address is already in use!');
         }
 
         if (error.code === 'auth/invalid-email') {
-          setSignInRequestErrorCode('That email address is invalid!');
+          setSignInRequestError('That email address is invalid!');
         }
+
+        if (error.code === 'auth/user-not-found') {
+          setSignInRequestError(
+            'There is no user record corresponding to this email address, Please create a new account.',
+          );
+        }
+        setIsLoading(false);
       });
   }
 
@@ -49,10 +56,10 @@ export default function AuthenticationProvider({ children }) {
       isAuthenticated: !!user,
       isLoading,
       signInRequest,
-      signInRequestErrorCode,
+      signInRequestError,
       signUpRequest,
     }),
-    [user, isLoading, signInRequestErrorCode],
+    [user, isLoading, signInRequestError],
   );
 
   if (initializing) return null;
