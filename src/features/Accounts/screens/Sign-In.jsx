@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { View } from 'react-native';
-import { Divider } from 'react-native-paper';
+import { Divider, HelperText } from 'react-native-paper';
 import AnimatedLottieView from 'lottie-react-native';
 import ScreenContainer from '../../../components/Screen-Container';
 import { AuthenticationContext } from '../../../services/authentication/Authentication-Context';
@@ -11,10 +11,13 @@ import PasswordInput from '../components/Password-Input';
 import Button from '../../../components/Button';
 import PressableText from '../../../components/Pressable-Text';
 import AnimatedIllustration from '../../../assets/sign-in-illustration.json';
+import LoadingScreen from '../../../components/Loading-Animation';
 
 export default function SignIn() {
   const navigation = useNavigation();
-  const { signInRequest } = useContext(AuthenticationContext);
+  const { signInRequest, isLoading, signInRequestError } = useContext(
+    AuthenticationContext,
+  );
 
   const [email, setEmail] = useState('');
   const [emailError, setEmailError] = useState(false);
@@ -24,8 +27,13 @@ export default function SignIn() {
   const [passwordSecure, setPasswordSecure] = useState(true);
 
   const signInFunction = () => {
-    if (emailError === false && passwordError === false) {
-      signInRequest(email.toLowerCase().trim(), password.toLowerCase().trim());
+    if (
+      emailError === false &&
+      passwordError === false &&
+      email.length !== 0 &&
+      password.length !== 0
+    ) {
+      signInRequest(email.toLowerCase().trim(), password.trim());
     }
   };
 
@@ -82,6 +90,14 @@ export default function SignIn() {
         <View>
           <Button text="Sign In" onPress={signInFunction} />
         </View>
+
+        <LoadingScreen visible={isLoading} />
+
+        {!!signInRequestError && (
+          <HelperText className="text-center" type="error">
+            {signInRequestError}
+          </HelperText>
+        )}
 
         <View>
           <PressableText
