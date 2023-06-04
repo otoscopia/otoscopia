@@ -6,7 +6,7 @@ import Navigation from './src/infrastructure/navigation/Navigation';
 import colors from './src/infrastructure/themes/colors';
 
 function App() {
-  const colorScheme = useColorScheme();
+  const colorScheme = useColorScheme() === 'dark';
 
   return (
     <AuthenticationProvider>
@@ -14,10 +14,9 @@ function App() {
         <Navigation />
       </PaperProvider>
       <StatusBar
+        barStyle={colorScheme ? 'light-content' : 'dark-content'}
         backgroundColor={
-          colorScheme === 'dark'
-            ? colors.dark.background
-            : colors.light.background
+          colorScheme ? colors.dark.background : colors.light.background
         }
       />
     </AuthenticationProvider>
