@@ -25,15 +25,20 @@ export default function SignUp() {
 
   const navigation = useNavigation();
 
-  const { signUpRequest } = useContext(AuthenticationContext);
+  const { codeRequest } = useContext(AuthenticationContext);
 
   const signUpFunction = () => {
     if (
       phoneNumberError === false &&
+      phoneNumber.toString().length !== 0 &&
       emailError === false &&
+      email.length !== 0 &&
       checked === true
     ) {
-      signUpRequest(phoneNumber, email.toLowerCase().trim());
+      codeRequest(phoneNumber);
+      navigation.navigate('Verification Code', {
+        email,
+      });
     }
   };
 
