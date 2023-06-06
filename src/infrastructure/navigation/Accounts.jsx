@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SignIn from '../../features/Accounts/screens/Sign-In';
 import SignUp from '../../features/Accounts/screens/Sign-Up';
 import VerificationCode from '../../features/Accounts/screens/Verification-Code';
+import Password from '../../features/Accounts/screens/Password';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +17,10 @@ function SignUpComponent() {
 
 function VerificationCodeComponent() {
   return <VerificationCode />;
+}
+
+function PasswordComponent() {
+  return <Password />;
 }
 
 const screenOptions = {
@@ -32,6 +37,7 @@ export default function Accounts() {
         name="Verification Code"
         component={VerificationCodeComponent}
       />
+      <Stack.Screen name="Password" component={PasswordComponent} />
     </Stack.Navigator>
   );
 }
