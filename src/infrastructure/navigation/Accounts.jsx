@@ -20,6 +20,7 @@ function VerificationCodeComponent() {
 
 const screenOptions = {
   headerShown: false,
+  animation: 'fade',
 };
 
 export default function Accounts() {
