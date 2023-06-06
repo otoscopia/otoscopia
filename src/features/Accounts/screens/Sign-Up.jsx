@@ -47,7 +47,7 @@ export default function SignUp() {
       emailError === false &&
       checkbox === true
     ) {
-      codeRequest(phoneNumber);
+      // codeRequest(phoneNumber);
       if (!!codeRequestError === false) {
         navigation.navigate('Verification Code', {
           email,
