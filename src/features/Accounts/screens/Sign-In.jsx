@@ -27,13 +27,13 @@ export default function SignIn() {
   const [passwordSecure, setPasswordSecure] = useState(true);
 
   const signInFunction = () => {
-    if (
-      emailError === false &&
-      passwordError === false &&
-      email.length !== 0 &&
-      password.length !== 0
-    ) {
-      signInRequest(email.toLowerCase().trim(), password.trim());
+    if (email.length !== 0 && password.length !== 0) {
+      if (emailError === false && passwordError === false) {
+        signInRequest(email.toLowerCase().trim(), password.trim());
+      }
+    } else {
+      setEmailError(true);
+      setPasswordError(true);
     }
   };
 
