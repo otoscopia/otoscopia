@@ -16,11 +16,9 @@ function App() {
     }, 2000);
   }, []);
 
-  if (isLoading) {
-    return <SplashScreen />;
-  }
-
-  return (
+  return isLoading ? (
+    <SplashScreen />
+  ) : (
     <AuthenticationProvider>
       <PaperProvider>
         <Navigation />
