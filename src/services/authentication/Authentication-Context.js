@@ -11,7 +11,9 @@ export default function AuthenticationProvider({ children }) {
 
   const [signInRequestError, setSignInRequestError] = useState('');
 
-  const [codeRequestError, setCodeRequestError] = useState();
+  const [verificationId, setVerificationId] = useState('');
+
+  const [codeRequestError, setCodeRequestError] = useState('');
 
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(userData => {
@@ -54,18 +56,22 @@ export default function AuthenticationProvider({ children }) {
   }
 
   function codeRequest(phoneNumber) {
+    setIsLoading(true);
+
     const countryCode = '+63';
     const tempPhoneNumber = phoneNumber.toString().trim(1);
     const countryPhoneNumber = countryCode + tempPhoneNumber;
 
     auth()
-      .verifyPhoneNumber(countryPhoneNumber, 120)
+      .verifyPhoneNumber(countryPhoneNumber)
       .then(data => {
-        console.log(data);
+        setVerificationId(data.verificationId);
       })
       .catch(error => {
-        setCodeRequestError('Error sending verification code.', error);
+        console.log(error);
       });
+
+    setIsLoading(false);
   }
 
   const contextValue = useMemo(
