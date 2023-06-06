@@ -20,26 +20,40 @@ export default function SignUp() {
   const [phoneNumber, setPhoneNumber] = React.useState(0);
   const [phoneNumberError, setPhoneNumberError] = React.useState(false);
 
-  const [checked, setChecked] = useState(false);
+  const [checkbox, setCheckbox] = useState(false);
+  const [checkboxError, setCheckboxError] = useState(false);
+
   const [modal, setModal] = useState(false);
 
   const navigation = useNavigation();
 
-  const { codeRequest } = useContext(AuthenticationContext);
+  const { codeRequest, codeRequestError } = useContext(AuthenticationContext);
 
   const signUpFunction = () => {
+    if (email.length === 0) {
+      setEmailError(true);
+    }
+
+    if (phoneNumber.toString().length <= 10) {
+      setPhoneNumberError(true);
+    }
+
+    if (checkbox === false) {
+      setCheckboxError(true);
+    }
+
     if (
       phoneNumberError === false &&
-      phoneNumber.toString().length !== 0 &&
       emailError === false &&
-      email.length !== 0 &&
-      checked === true
+      checkbox === true
     ) {
       codeRequest(phoneNumber);
-      navigation.navigate('Verification Code', {
-        email,
-        phoneNumber,
-      });
+      if (!!codeRequestError === false) {
+        navigation.navigate('Verification Code', {
+          email,
+          phoneNumber,
+        });
+      }
     }
   };
 
@@ -95,8 +109,12 @@ export default function SignUp() {
 
           <View className="flex-row w-[90%] items-center">
             <Checkbox
-              status={checked ? 'checked' : 'unchecked'}
-              onPress={() => setChecked(!checked)}
+              status={checkbox ? 'checked' : 'unchecked'}
+              onPress={() => {
+                setCheckboxError(false);
+                setCheckbox(!checkbox);
+              }}
+              uncheckedColor={checkboxError ? 'red' : undefined}
             />
 
             <TouchableOpacity onPress={() => setModal(true)}>
