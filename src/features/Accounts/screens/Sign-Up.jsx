@@ -38,6 +38,7 @@ export default function SignUp() {
       codeRequest(phoneNumber);
       navigation.navigate('Verification Code', {
         email,
+        phoneNumber,
       });
     }
   };
