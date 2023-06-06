@@ -1,26 +1,18 @@
 import {
-  View,
   KeyboardAvoidingView,
   ScrollView,
   Platform,
   StyleSheet,
 } from 'react-native';
 import React from 'react';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import PropTypes from 'prop-types';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function ScreenContainer({
   children,
   scrollEnabled,
   enableKeyboardAvoidingView,
 }) {
-  const {
-    top: insetTop,
-    right: insetRight,
-    bottom: insetBottom,
-    left: insetLeft,
-  } = useSafeAreaInsets();
-
   const styles = StyleSheet.create({
     ScrollViewStyle: {
       flexGrow: 1,
@@ -28,8 +20,8 @@ export default function ScreenContainer({
   });
 
   return (
-    <View
-      className={`flex-1 bg-light-background dark:bg-dark-background mt-[${insetTop}] mb-[${insetBottom}] ml-[${insetLeft}] mr-[${insetRight}]`}
+    <SafeAreaView
+      className="flex-1 bg-light-background dark:bg-dark-background"
       style={styles.ContainerStyle}>
       <KeyboardAvoidingView
         enabled={enableKeyboardAvoidingView}
@@ -45,7 +37,7 @@ export default function ScreenContainer({
           {children}
         </ScrollView>
       </KeyboardAvoidingView>
-    </View>
+    </SafeAreaView>
   );
 }
 
