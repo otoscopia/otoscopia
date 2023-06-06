@@ -23,7 +23,7 @@ export default function VerificationCode() {
   const navigation = useNavigation();
 
   const [seconds, setSeconds] = useState(0);
-  const [minutes, setMinutes] = useState(5);
+  const [minutes, setMinutes] = useState(2);
 
   const pinView = useRef(null);
   const [showRemoveButton, setShowRemoveButton] = useState(false);
