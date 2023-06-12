@@ -68,7 +68,7 @@ export default function AuthenticationProvider({ children }) {
         setVerificationId(data.verificationId);
       })
       .catch(error => {
-        console.log(error);
+        setCodeRequestError(error);
       });
 
     setIsLoading(false);
