@@ -47,13 +47,15 @@ export default function SignUp() {
       emailError === false &&
       checkbox === true
     ) {
-      // codeRequest(phoneNumber);
-      if (!!codeRequestError === false) {
-        navigation.navigate('Verification Code', {
-          email,
-          phoneNumber,
-        });
-      }
+      codeRequest(phoneNumber);
+      setTimeout(() => {
+        if (!!codeRequestError === false) {
+          navigation.navigate('Verification Code', {
+            email,
+            phoneNumber,
+          });
+        }
+      }, 2000);
     }
   };
 
