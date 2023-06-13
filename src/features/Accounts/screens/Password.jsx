@@ -22,6 +22,12 @@ export default function Password() {
   const [confirmPasswordError, setConfirmPasswordError] = useState(false);
   const [confirmPasswordSecure, setConfirmPasswordSecure] = useState(true);
 
+  const Submit = () => {
+    if (password.length >= 8 && confirmPasswordError === false) {
+      navigation.navigate('User Information');
+    }
+  };
+
   return (
     <ScreenContainer>
       <View className="flex-1 p-4 justify-center space-y-4">
@@ -57,15 +63,17 @@ export default function Password() {
 
         <View>
           <PasswordInput
+            label="Verify Password"
             onChangeText={setConfirmPassword}
             onPress={() => setConfirmPasswordSecure(!confirmPasswordSecure)}
             onEndEditing={() =>
-              !(confirmPassword.length >= 8)
+              !(confirmPassword === password)
                 ? setConfirmPasswordError(true)
                 : setConfirmPasswordError(false)
             }
             secureTextEntry={confirmPasswordSecure}
             showHelper={confirmPasswordError}
+            helperMessage="Password does not match"
           />
         </View>
 
@@ -76,10 +84,7 @@ export default function Password() {
         </View>
 
         <View>
-          <Button
-            text="Submit"
-            onPress={() => navigation.navigate('User Information')}
-          />
+          <Button text="Submit" onPress={Submit} />
         </View>
       </View>
     </ScreenContainer>
