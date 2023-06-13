@@ -5,6 +5,7 @@ import SignUp from '../../features/Accounts/screens/Sign-Up';
 import VerificationCode from '../../features/Accounts/screens/Verification-Code';
 import Password from '../../features/Accounts/screens/Password';
 import UserInformation from '../../features/Accounts/screens/User-Information';
+import ForgotPassword from '../../features/Accounts/screens/ForgotPassword';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,6 +29,10 @@ function UserInformationComponent() {
   return <UserInformation />;
 }
 
+function ForgotPasswordComponent() {
+  return <ForgotPassword />;
+}
+
 const screenOptions = {
   headerShown: false,
   animation: 'fade',
@@ -46,6 +51,10 @@ export default function Accounts() {
       <Stack.Screen
         name="User Information"
         component={UserInformationComponent}
+      />
+      <Stack.Screen
+        name="Forgot Password"
+        component={ForgotPasswordComponent}
       />
     </Stack.Navigator>
   );
