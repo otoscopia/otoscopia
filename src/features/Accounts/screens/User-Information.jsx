@@ -28,12 +28,12 @@ export default function UserInformation() {
   return (
     <ScreenContainer>
       <View className="flex-1 justify-center p-4 space-y-4">
-        <View>
+        <View className="items-center">
           <AnimatedLottieView
             source={Illustration}
             autoPlay
             loop
-            className="w-full"
+            className="w-3/4"
           />
         </View>
 
@@ -53,9 +53,10 @@ export default function UserInformation() {
                 ? setUsernameError(false)
                 : setUsernameError(true)
             }
+            placeholder="Prince"
+            textContentType="username"
             showHelper={usernameError}
             helperMessage="Username Error"
-            placeholder="Prince"
           />
         </View>
 
@@ -68,9 +69,10 @@ export default function UserInformation() {
                 ? setFirstNameError(false)
                 : setFirstNameError(true)
             }
+            placeholder="Laurence"
+            textContentType="givenName"
             showHelper={firstNameError}
             helperMessage="First Name Error"
-            placeholder="Laurence"
           />
         </View>
 
@@ -83,9 +85,10 @@ export default function UserInformation() {
                 ? setMiddleNameError(false)
                 : setMiddleNameError(true)
             }
+            placeholder="Avila"
+            textContentType="middleName"
             showHelper={middleNameError}
             helperMessage="Middle Name Error"
-            placeholder="Avila"
           />
         </View>
 
@@ -98,9 +101,10 @@ export default function UserInformation() {
                 ? setFamilyNameError(false)
                 : setFamilyNameError(true)
             }
+            placeholder="Macabato"
+            textContentType="familyName"
             showHelper={familyNameError}
             helperMessage="Family Name Error"
-            placeholder="Macabato"
           />
         </View>
 
@@ -108,7 +112,9 @@ export default function UserInformation() {
           <TextInput
             label="Name Suffix"
             onChangeText={setSuffixName}
+            onEndEditing={null}
             placeholder="Jr."
+            textContentType="nameSuffix"
           />
         </View>
 
