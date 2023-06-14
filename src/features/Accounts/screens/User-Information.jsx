@@ -112,7 +112,7 @@ export default function UserInformation() {
           <TextInput
             label="Name Suffix"
             onChangeText={setSuffixName}
-            onEndEditing={null}
+            onEndEditing={() => null}
             placeholder="Jr."
             textContentType="nameSuffix"
             helperMessage="Name Suffix Error"
