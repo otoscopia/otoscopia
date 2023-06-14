@@ -15,13 +15,13 @@ export default function UserInformation() {
   const [usernameError, setUsernameError] = useState('');
 
   const [firstName, setFirstName] = useState('');
-  const [firstNameError, setFirstNameError] = useState('');
+  const [firstNameError, setFirstNameError] = useState(false);
 
   const [middleName, setMiddleName] = useState('');
-  const [middleNameError, setMiddleNameError] = useState('');
+  const [middleNameError, setMiddleNameError] = useState(false);
 
   const [familyName, setFamilyName] = useState('');
-  const [familyNameError, setFamilyNameError] = useState('');
+  const [familyNameError, setFamilyNameError] = useState(false);
 
   const [suffixName, setSuffixName] = useState('');
 
@@ -115,6 +115,7 @@ export default function UserInformation() {
             onEndEditing={null}
             placeholder="Jr."
             textContentType="nameSuffix"
+            helperMessage="Name Suffix Error"
           />
         </View>
 
