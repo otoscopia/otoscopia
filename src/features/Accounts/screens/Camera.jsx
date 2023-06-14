@@ -13,7 +13,7 @@ export default function Camera() {
       const options = { quality: 0.5, base64: true };
       const imageData = await cameraRef.current.takePictureAsync(options);
 
-      navigation.navigate('Profile Picture', { capturedImage: imageData.uri });
+      navigation.navigate('Welcome', imageData.uri);
     }
   };
 
