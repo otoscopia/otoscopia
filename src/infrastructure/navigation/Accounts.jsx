@@ -7,6 +7,7 @@ import Password from '../../features/Accounts/screens/Password';
 import UserInformation from '../../features/Accounts/screens/User-Information';
 import ForgotPassword from '../../features/Accounts/screens/ForgotPassword';
 import Gender from '../../features/Accounts/screens/Gender';
+import Camera from '../../features/Accounts/screens/Camera';
 
 const Stack = createNativeStackNavigator();
 
@@ -38,6 +39,10 @@ function GenderComponent() {
   return <Gender />;
 }
 
+function CameraComponent() {
+  return <Camera />;
+}
+
 const screenOptions = {
   headerShown: false,
   animation: 'fade',
@@ -62,6 +67,7 @@ export default function Accounts() {
         name="Forgot Password"
         component={ForgotPasswordComponent}
       />
+      <Stack.Screen name="Camera" component={CameraComponent} />
     </Stack.Navigator>
   );
 }
