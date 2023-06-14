@@ -16,7 +16,7 @@ export default function Gender() {
   const [selected, setSelected] = useState();
 
   const continueFunction = () => {
-    navigation.navigate('Profile');
+    navigation.navigate('Set Profile');
   };
 
   return (
@@ -45,7 +45,9 @@ export default function Gender() {
         <View className="flex-row space-x-4 items-center">
           <Pressable
             className={`flex-1 ${
-              selected === 'Female' ? 'border rounded-md' : null
+              selected === 'Female'
+                ? 'border dark:border-dark-surface rounded-md'
+                : null
             }`}
             onPress={() => setSelected('Female')}>
             <AnimatedLottieView source={Woman} className="w-full" />
@@ -53,7 +55,9 @@ export default function Gender() {
 
           <Pressable
             className={`flex-1 ${
-              selected === 'Male' ? 'border rounded-md' : null
+              selected === 'Male'
+                ? 'border dark:border-dark-surface rounded-md'
+                : null
             }`}
             onPress={() => setSelected('Male')}>
             <AnimatedLottieView source={Man} className="w-full" />
