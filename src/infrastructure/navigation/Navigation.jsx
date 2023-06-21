@@ -1,9 +1,9 @@
 import React, { useContext, useRef } from 'react';
-import { Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import analytics from '@react-native-firebase/analytics';
 import { AuthenticationContext } from '../../services/authentication/Authentication-Context';
 import Accounts from './Accounts';
+import AppNavigation from './AppNavigation';
 
 export default function Navigation() {
   const { isAuthenticated } = useContext(AuthenticationContext);
@@ -33,7 +33,7 @@ export default function Navigation() {
       ref={navigationRef}
       onReady={onReady}
       onStateChange={onStateChange}>
-      {isAuthenticated ? <Text>True</Text> : <Accounts />}
+      {isAuthenticated ? <AppNavigation /> : <Accounts />}
     </NavigationContainer>
   );
 }
