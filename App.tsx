@@ -5,6 +5,7 @@ import AuthenticationProvider from './src/services/authentication/Authentication
 import Navigation from './src/infrastructure/navigation/Navigation';
 import colors from './src/infrastructure/themes/colors';
 import SplashScreen from './src/features/SplashScreen';
+import PostProvider from './src/services/post/Post-Context';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -20,9 +21,11 @@ function App() {
     <SplashScreen />
   ) : (
     <AuthenticationProvider>
-      <PaperProvider>
-        <Navigation />
-      </PaperProvider>
+      <PostProvider>
+        <PaperProvider>
+          <Navigation />
+        </PaperProvider>
+      </PostProvider>
       <StatusBar
         barStyle={colorScheme ? 'light-content' : 'dark-content'}
         backgroundColor={
