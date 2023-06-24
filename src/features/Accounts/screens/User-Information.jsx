@@ -12,7 +12,7 @@ export default function UserInformation() {
   const navigation = useNavigation();
 
   const [username, setUsername] = useState('');
-  const [usernameError, setUsernameError] = useState('');
+  const [usernameError, setUsernameError] = useState(false);
 
   const [firstName, setFirstName] = useState('');
   const [firstNameError, setFirstNameError] = useState(false);
