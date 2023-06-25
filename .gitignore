@@ -66,3 +66,7 @@ yarn-error.log
 /coverage
 
 .vscode
+
+# sonar
+.scannerwork
+sonar-project.properties
