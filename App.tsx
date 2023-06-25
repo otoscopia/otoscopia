@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import AuthenticationProvider from './src/infrastructure/services/authentication/authentication-provider';
 import {NavigationContainer} from '@react-navigation/native';
 import Navigation from './src/infrastructure/navigation/navigation-index';
+import Splashscreen from './src/features/splashscreen';
 
 export default function App(): JSX.Element {
   const [isLoading, setIsLoading] = useState(true);
@@ -14,7 +15,9 @@ export default function App(): JSX.Element {
 
   return (
     <AuthenticationProvider>
-      {isLoading ? undefined : (
+      {isLoading ? (
+        <Splashscreen />
+      ) : (
         <NavigationContainer>
           <Navigation />
         </NavigationContainer>
