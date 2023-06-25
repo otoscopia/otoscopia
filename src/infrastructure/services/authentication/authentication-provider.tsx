@@ -12,7 +12,7 @@ export default function AuthenticationProvider({
   children,
 }: React.PropsWithChildren<{
   children: React.ReactNode;
-}>): JSX.Element {
+}>): React.JSX.Element {
   const [isLoading, setIsLoading] = useState(false);
   const [user, setUser] = useState(null);
 

@@ -28,7 +28,7 @@ export default function Container({
   keyboardAvoidingEnabled = true,
   padding = true,
   styles = '',
-}: ContainerProps): JSX.Element {
+}: ContainerProps): React.JSX.Element {
   return (
     <SafeAreaView className="flex-1 bg-light-background dark:bg-dark-background">
       <KeyboardAvoidingView

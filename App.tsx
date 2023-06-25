@@ -4,7 +4,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import Navigation from './src/infrastructure/navigation/navigation-index';
 import Splashscreen from './src/features/splashscreen';
 
-export default function App(): JSX.Element {
+export default function App(): React.JSX.Element {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
