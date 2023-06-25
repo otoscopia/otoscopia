@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import AuthenticationProvider from './src/infrastructure/services/authentication/authentication-provider';
-import {NavigationContainer} from '@react-navigation/native';
 import Navigation from './src/infrastructure/navigation/navigation-index';
 import Splashscreen from './src/features/splashscreen';
 
@@ -15,13 +14,7 @@ export default function App(): React.JSX.Element {
 
   return (
     <AuthenticationProvider>
-      {isLoading ? (
-        <Splashscreen />
-      ) : (
-        <NavigationContainer>
-          <Navigation />
-        </NavigationContainer>
-      )}
+      {isLoading ? <Splashscreen /> : <Navigation />}
     </AuthenticationProvider>
   );
 }
