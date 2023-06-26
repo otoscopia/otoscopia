@@ -5,8 +5,13 @@ interface AuthenticationContextValues {
   isLoading: boolean;
 }
 
+const defaultProp: AuthenticationContextValues = {
+  isAuthenticated: false,
+  isLoading: false,
+};
+
 export const AuthenticationContext =
-  createContext<AuthenticationContextValues | null>(null);
+  createContext<AuthenticationContextValues>(defaultProp);
 
 export default function AuthenticationProvider({
   children,
