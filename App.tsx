@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import AuthenticationProvider from './src/infrastructure/services/authentication/authentication-provider';
-import Navigation from './src/infrastructure/navigation/navigation-index';
-import Splashscreen from './src/features/splashscreen';
+import AuthenticationProvider from './src/services/authentication/Authentication-Context-Provider';
+import Navigation from './src/infrastructure/navigation/Navigation-Index';
+import Splashscreen from './src/features/Splashscreen';
 
 export default function App(): React.JSX.Element {
   const [isLoading, setIsLoading] = useState(true);
