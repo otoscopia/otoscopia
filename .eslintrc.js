@@ -1,29 +1,27 @@
 module.exports = {
-  root: true,
   env: {
     es2021: true,
+    'jest/globals': true,
   },
-  extends: [
-    '@react-native',
-    'plugin:react/recommended',
-    'standard-with-typescript',
-    'prettier',
+  extends: ['@react-native', 'airbnb', 'airbnb-typescript', 'prettier'],
+  overrides: [
+    {
+      env: {
+        node: true,
+      },
+      files: ['.eslintrc.{js,cjs}'],
+      parserOptions: {
+        sourceType: 'script',
+      },
+    },
   ],
-  overrides: [],
   parserOptions: {
     project: './tsconfig.json',
     ecmaVersion: 'latest',
     sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true,
-    },
   },
   plugins: ['react'],
   rules: {
-    'react/jsx-filename-extension': [
-      1,
-      {extensions: ['.ts', '.tsx', '.js', '.jsx']},
-    ],
     'prettier/prettier': ['error', {endOfLine: 'auto'}],
   },
 };
