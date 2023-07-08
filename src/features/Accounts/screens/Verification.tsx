@@ -1,9 +1,9 @@
 import {StyleSheet, TouchableOpacity, View, useColorScheme} from 'react-native';
 import React, {useEffect, useState, useRef} from 'react';
-import Container from '../../../components/Container';
 import {useNavigation, useRoute} from '@react-navigation/native';
-import colors from '../../../infrastructure/themes/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Container from '../../../components/Container';
+import colors from '../../../infrastructure/themes/colors';
 import AnimatedLottieView from 'lottie-react-native';
 import {Divider, Text} from 'react-native-paper';
 import PinView from 'react-native-pin-view';

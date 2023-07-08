@@ -2,13 +2,13 @@ import React, {useContext, useState} from 'react';
 import {View, TouchableOpacity} from 'react-native';
 import AnimatedLottieView from 'lottie-react-native';
 import {Divider, Text, HelperText} from 'react-native-paper';
+import {useNavigation} from '@react-navigation/native';
 import Container from '../../../components/Container';
 import Header from '../components/Header';
 import Animation from '../../../assets/sign-in-animation.json';
 import EmailInput from '../components/EmailInput';
 import PasswordInput from '../components/PasswordInput';
 import Button from '../../../components/Button';
-import {useNavigation} from '@react-navigation/native';
 import {AuthenticationContext} from '../../../services/authentication/Authentication-Context-Provider';
 import Loading from '../../../components/Loading';
 
