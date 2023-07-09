@@ -4,6 +4,10 @@
 
 import React, { useState } from 'react';
 import { AppRegistry } from 'react-native';
+import {
+  SafeAreaProvider,
+  initialWindowMetrics,
+} from 'react-native-safe-area-context';
 import App from './App.tsx';
 import { name as appName } from './app.json';
 
@@ -14,7 +18,11 @@ function Main() {
     setInitializing(false);
   }, 2500);
 
-  return initializing ? undefined : <App />;
+  return (
+    <SafeAreaProvider initialMetrics={initialWindowMetrics}>
+      {initializing ? undefined : <App />}
+    </SafeAreaProvider>
+  );
 }
 
 AppRegistry.registerComponent(appName, () => Main);
