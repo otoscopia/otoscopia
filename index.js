@@ -10,6 +10,7 @@ import {
 } from 'react-native-safe-area-context';
 import App from './App.tsx';
 import { name as appName } from './app.json';
+import Splashscreen from './src/features/Splashscreen';
 
 function Main() {
   const [initializing, setInitializing] = useState(true);
@@ -20,7 +21,7 @@ function Main() {
 
   return (
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
-      {initializing ? undefined : <App />}
+      {initializing ? <Splashscreen /> : <App />}
     </SafeAreaProvider>
   );
 }
