@@ -8,7 +8,9 @@ const AuthenticationContextDefaultProps: AuthenticationContextValues = {
   isAuthenticated: false,
 };
 
-const AuthenticationContext = createContext(AuthenticationContextDefaultProps);
+export const AuthenticationContext = createContext(
+  AuthenticationContextDefaultProps,
+);
 
 interface AuthenticationProviderProps {
   children: React.ReactNode;
