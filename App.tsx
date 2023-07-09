@@ -2,7 +2,7 @@ import React from 'react';
 import { StatusBar, useColorScheme } from 'react-native';
 import AuthenticationProvider from './src/services/authentication-context';
 import NavigationContainer from './src/infrastructure/navigation/navigation-container';
-import colors from './src/infrastructure/navigation/themes/colors';
+import colors from './src/infrastructure/themes/colors';
 
 export default function App(): React.JSX.Element {
   const colorScheme = useColorScheme() === 'dark';
