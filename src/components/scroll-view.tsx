@@ -1,25 +1,35 @@
 import { ScrollView as NativeScrollView } from 'react-native';
 import React from 'react';
 
+interface ScrollViewProps {
+  children: React.ReactNode;
+  enableScroll?: boolean;
+}
+
+const defaultProps = {
+  enableScroll: true,
+} as ScrollViewProps;
+
 const scrollViewStyle = {
-  flex: 1,
+  flexGrow: 1,
 };
 
 export default function ScrollView({
   children,
   enableScroll,
-}: {
-  children: React.ReactNode;
-  enableScroll?: boolean;
-}): React.JSX.Element {
+}: ScrollViewProps): React.JSX.Element {
   return (
     <NativeScrollView
-      contentContainerStyle={scrollViewStyle}
       scrollEnabled={enableScroll}
+      contentContainerStyle={scrollViewStyle}
       contentInsetAdjustmentBehavior="automatic"
       keyboardShouldPersistTaps="handled"
-      showsVerticalScrollIndicator={false}>
+      showsVerticalScrollIndicator={false}
+      showsHorizontalScrollIndicator={false}
+      bounces>
       {children}
     </NativeScrollView>
   );
 }
+
+ScrollView.defaultProps = defaultProps;
