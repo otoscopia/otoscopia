@@ -1,12 +1,12 @@
 import {TouchableOpacity, View} from 'react-native';
 import React, {useState} from 'react';
-import Container from '../../../components/Container';
 import {Checkbox, Divider, Text} from 'react-native-paper';
 import AnimatedLottieView from 'lottie-react-native';
+import {useNavigation} from '@react-navigation/native';
+import Container from '../../../components/Container';
 import Animation from '../../../assets/sign-up-animation.json';
 import Header from '../components/Header';
 import PhoneNumberTextInput from '../../../components/Phone-Number-TextInput';
-import {useNavigation} from '@react-navigation/native';
 import EmailInput from '../components/EmailInput';
 import Policy from '../components/Policy';
 import Button from '../../../components/Button';

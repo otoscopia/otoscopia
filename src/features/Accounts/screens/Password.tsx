@@ -1,14 +1,14 @@
 import {View} from 'react-native';
 import React, {useEffect, useState} from 'react';
-import Container from '../../../components/Container';
-import Animation from '../../../assets/password-animation.json';
 import AnimatedLottieView from 'lottie-react-native';
-import Header from '../components/Header';
-import PasswordInput from '../components/PasswordInput';
 import {Checkbox, Text} from 'react-native-paper';
-import Button from '../../../components/Button';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Container from '../../../components/Container';
+import Animation from '../../../assets/password-animation.json';
+import Header from '../components/Header';
+import PasswordInput from '../components/PasswordInput';
+import Button from '../../../components/Button';
 import colors from '../../../infrastructure/themes/colors';
 
 const regexSymbolSearch = /[+=\/\-!@#$%^&*(){}[\]\\';:".<>,?_]/;
