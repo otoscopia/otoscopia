@@ -3,7 +3,7 @@ import {TextInput as PaperInput} from 'react-native-paper';
 import TextInput from '../../../components/TextInput';
 
 interface PasswordInputProps {
-  onChangeText: () => any;
+  onChangeText: () => string;
   onEndEditing: () => any;
   secureTextEntry: boolean;
   onPress: () => any;

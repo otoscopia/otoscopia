@@ -3,7 +3,7 @@ import {TextInput as PaperInput} from 'react-native-paper';
 import TextInput from '../../../components/TextInput';
 
 interface EmailInputProps {
-  onChangeText: () => void;
+  onChangeText: () => string;
   onEndEditing: () => void;
   showHelper: boolean;
 }

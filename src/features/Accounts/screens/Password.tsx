@@ -11,6 +11,9 @@ import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import colors from '../../../infrastructure/themes/colors';
 
+const regexSymbolSearch = /[+=\/\-!@#$%^&*(){}[\]\\';:".<>,?_]/;
+const regexCamelCaseSearch = /[a-z][A-Z]/;
+
 export default function Password(): React.JSX.Element {
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState(false);
@@ -26,6 +29,8 @@ export default function Password(): React.JSX.Element {
 
   const navigation = useNavigation();
 
+  console.log(regexCamelCaseSearch.test(password), password);
+
   const Submit = (): void => {
     if (minPassword && camelCase && hasSymbol && password === confirmPassword) {
       navigation.navigate('User Information');
@@ -33,12 +38,8 @@ export default function Password(): React.JSX.Element {
   };
 
   useEffect(() => {
-    const regexCamelCaseSearch = /[a-z][A-Z]/;
     setCamelCase(regexCamelCaseSearch.test(password));
-
-    const regexSymbolSearch = /[+=\/\-!@#$%^&*(){}[\]\\';:".<>,?_]/;
     setHasSymbol(regexSymbolSearch.test(password));
-
     setMinPassword(password.length >= 8);
   }, [password]);
 

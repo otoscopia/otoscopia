@@ -16,18 +16,25 @@ interface ContainerProps {
   styles?: string;
 }
 
+const defaultProps = {
+  scrollEnabled: true,
+  keyboardAvoidingEnabled: true,
+  padding: true,
+  styles: '',
+} as ContainerProps;
+
 const style = StyleSheet.create({
   ScrollViewStyle: {
     flexGrow: 1,
   },
 });
 
-export default function Container({
+function Container({
   children,
-  scrollEnabled = true,
-  keyboardAvoidingEnabled = true,
-  padding = true,
-  styles = '',
+  scrollEnabled,
+  keyboardAvoidingEnabled,
+  padding,
+  styles,
 }: ContainerProps): React.JSX.Element {
   return (
     <SafeAreaView className="flex-1 bg-light-background dark:bg-dark-background">
@@ -50,3 +57,7 @@ export default function Container({
     </SafeAreaView>
   );
 }
+
+Container.defaultProps = defaultProps;
+
+export default Container;

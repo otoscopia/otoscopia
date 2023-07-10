@@ -3,26 +3,26 @@ import {HelperText, TextInput as PaperInput} from 'react-native-paper';
 
 interface TextInputProps {
   label: string;
-  autoCapitalize: string;
-  autoComplete: string;
-  autoCorrect: boolean;
-  editable: boolean;
-  importantForAutofill: string;
-  inputMode: string;
-  keyboardType: string;
-  maxLength: number;
-  onChangeText: () => any;
-  onEndEditing: () => any;
+  autoCapitalize?: string;
+  autoComplete?: string;
+  autoCorrect?: boolean;
+  editable?: boolean;
+  importantForAutofill?: string;
+  inputMode?: string;
+  keyboardType?: string;
+  maxLength?: number;
+  onChangeText: (text: string | number) => void;
+  onEndEditing: (event: any) => void;
   placeholder: string;
-  secureTextEntry: boolean;
-  textContentType: string;
-  left: React.JSX.Element;
-  right: React.JSX.Element;
+  secureTextEntry?: boolean;
+  textContentType?: string;
+  left?: () => void;
+  right?: () => void;
   showHelper: boolean;
   helperMessage: string;
 }
 
-const defaultProps: TextInputProps = {
+const defaultProps = {
   autoCapitalize: 'words',
   autoComplete: 'off',
   autoCorrect: false,
@@ -32,20 +32,12 @@ const defaultProps: TextInputProps = {
   keyboardType: 'default',
   maxLength: 32,
   secureTextEntry: false,
-  left: () => null,
-  right: () => null,
-  showHelper: false,
-  label: '',
-  onChangeText: () => null,
-  onEndEditing: () => null,
-  placeholder: '',
+  left: () => {},
+  right: () => {},
   textContentType: '',
-  helperMessage: '',
-};
+} as TextInputProps;
 
-TextInput.defaultProps = defaultProps;
-
-export default function TextInput({
+function TextInput({
   label,
   autoCapitalize,
   autoComplete,
@@ -94,3 +86,6 @@ export default function TextInput({
   );
 }
 
+TextInput.defaultProps = defaultProps;
+
+export default TextInput;
