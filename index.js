@@ -3,7 +3,7 @@
  */
 
 import React, { useState } from 'react';
-import { AppRegistry } from 'react-native';
+import { AppRegistry, useColorScheme, StatusBar } from 'react-native';
 import {
   SafeAreaProvider,
   initialWindowMetrics,
@@ -11,9 +11,11 @@ import {
 import App from './App.tsx';
 import { name as appName } from './app.json';
 import Splashscreen from './src/features/Splashscreen';
+import colors from './src/infrastructure/themes/colors';
 
 function Main() {
   const [initializing, setInitializing] = useState(true);
+  const colorScheme = useColorScheme() === 'dark';
 
   setTimeout(() => {
     setInitializing(false);
@@ -22,6 +24,12 @@ function Main() {
   return (
     <SafeAreaProvider initialMetrics={initialWindowMetrics}>
       {initializing ? <Splashscreen /> : <App />}
+      <StatusBar
+        backgroundColor={
+          colorScheme ? colors.dark.background : colors.light.background
+        }
+        barStyle={colorScheme ? 'light-content' : 'dark-content'}
+      />
     </SafeAreaProvider>
   );
 }
